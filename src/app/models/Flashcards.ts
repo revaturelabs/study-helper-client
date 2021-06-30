@@ -6,7 +6,7 @@ export interface Flashcard {
 
 export interface FlashcardSet {
   createdDate: Date;
-  lastModifiedDate: Date;
+  lastModifiedDate?: Date;
   name: string;
   tags: string[];
   cards: Flashcard[];

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Flashcard } from '../models/Flashcards';
+import { FlashcardsService } from '../services/flashcards/flashcards.service';
+import { Flashcard, FlashcardSet } from '../models/Flashcards';
 
 @Component({
   selector: 'app-create-flashcard-wizard',
@@ -15,7 +15,7 @@ export class CreateFlashcardWizardComponent implements OnInit {
   question = '';
   answer = '';
 
-  constructor() {}
+  constructor(private cardService: FlashcardsService) {}
 
   ngOnInit() {}
 
@@ -36,6 +36,13 @@ export class CreateFlashcardWizardComponent implements OnInit {
   }
 
   submit() {
+    const newSet: FlashcardSet = {
+      cards: this.cards,
+      createdDate: new Date(),
+      name: this.name,
+      tags: this.tags,
+    };
+    this.cardService.addCards(newSet);
     this.name = '';
     this.tags = [];
     this.tagName = '';
