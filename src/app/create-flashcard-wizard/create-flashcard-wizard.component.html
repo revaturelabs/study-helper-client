@@ -1,0 +1,96 @@
+<mat-stepper [linear]="true" #stepper>
+  <mat-step label="Basic Info">
+    <div class="col">
+      <mat-form-field appearance="fill">
+        <mat-label>Set Title</mat-label>
+        <input
+          [(ngModel)]="name"
+          matInput
+          placeholder="Eg. Course Refresher"
+          required
+        />
+      </mat-form-field>
+      <div class="row">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter Tags (Optional)</mat-label>
+          <input
+            [(ngModel)]="tagName"
+            matInput
+            placeholder="Spring, React, etc."
+          />
+        </mat-form-field>
+        <button (click)="onAddTag()" mat-icon-button>
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+      <mat-chip-list aria-label="Tags selection" class="tags__container">
+        <mat-chip color="primary" *ngFor="let tag of tags">{{ tag }}</mat-chip>
+      </mat-chip-list>
+      <button [disabled]="!name" mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step label="Add Cards">
+    <div class="row">
+      <div class="createdCardsView">
+        <mat-card *ngFor="let card of cards">
+          <p>Q: {{ card.question }}</p>
+          <hr />
+          <p>A: {{ card.answer }}</p>
+        </mat-card>
+      </div>
+      <div class="createCardForm col">
+        <mat-form-field>
+          <mat-label>Question (Front Side)</mat-label>
+          <input
+            [(ngModel)]="question"
+            matInput
+            placeholder="Eg. What is TypeScript?"
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Answer (Back Side)</mat-label>
+          <input
+            [(ngModel)]="answer"
+            matInput
+            placeholder="Eg. TypeScript is JavaScript, but with extra steps"
+          />
+        </mat-form-field>
+        <button
+          mat-button
+          [disabled]="!question || !answer"
+          (click)="onAddCard()"
+        >
+          Add Card
+        </button>
+      </div>
+    </div>
+    <button mat-button matStepperPrevious>Back</button>
+    <button [disabled]="cards.length < 1" mat-button matStepperNext>
+      Next
+    </button>
+  </mat-step>
+  <mat-step label="Review">
+    <div class="col">
+      <p>Name: {{ name }}</p>
+      <mat-chip-list aria-label="Tags selection" class="tags__container">
+        <mat-chip color="primary" *ngFor="let tag of tags">{{ tag }}</mat-chip>
+      </mat-chip-list>
+      <p>Cards: {{ cards.length }}</p>
+      <mat-card *ngFor="let card of cards">
+        <p>Q: {{ card.question }}</p>
+        <hr />
+        <p>A: {{ card.answer }}</p>
+      </mat-card>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button
+          [disabled]="!name || cards.length < 1"
+          mat-button
+          (click)="submit()"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  </mat-step>
+</mat-stepper>
