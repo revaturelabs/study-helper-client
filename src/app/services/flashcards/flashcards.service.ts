@@ -13,6 +13,10 @@ export class FlashcardsService {
     return this.flashcardSets;
   }
 
+  public getCardsSetById(id: string | number): FlashcardSet | null {
+    return this.flashcardSets.find((set) => set.id == id) || null;
+  }
+
   public addCards(cards: FlashcardSet) {
     this.flashcardSets.push(cards);
     this.subject.next(this.flashcardSets);

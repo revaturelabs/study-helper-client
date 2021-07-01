@@ -9,6 +9,7 @@ import { CreateFlashcardWizardComponent } from './create-flashcard-wizard/create
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlashcardSetsListComponent } from './flashcard-sets-list/flashcard-sets-list.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
+import { FlashcardStackViewComponent } from './flashcard-stack-view/flashcard-stack-view.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { MainpageComponent } from './mainpage/mainpage.component';
     CreateFlashcardWizardComponent,
     FlashcardSetsListComponent,
     MainpageComponent,
+    FlashcardStackViewComponent,
   ],
   imports: [
     BrowserModule,

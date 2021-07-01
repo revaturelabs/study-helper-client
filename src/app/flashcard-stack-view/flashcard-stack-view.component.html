@@ -1,0 +1,6 @@
+<div *ngIf="!!set; else noCards">
+  <h1>{{ set.name }}</h1>
+</div>
+<ng-template #noCards>
+  <h1>Woops! Wrong page.</h1>
+</ng-template>

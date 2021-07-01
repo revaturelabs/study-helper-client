@@ -37,6 +37,7 @@ export class CreateFlashcardWizardComponent implements OnInit {
 
   submit() {
     const newSet: FlashcardSet = {
+      id: new Date().getTime().toString(),
       cards: this.cards,
       createdDate: new Date(),
       name: this.name,

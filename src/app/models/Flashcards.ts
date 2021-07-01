@@ -5,6 +5,7 @@ export interface Flashcard {
 }
 
 export interface FlashcardSet {
+  id: string;
   createdDate: Date;
   lastModifiedDate?: Date;
   name: string;

@@ -15,6 +15,7 @@ describe('FlashcardsService', () => {
     let cards = service.getCards();
     expect(cards).toEqual([]);
     const newCards: FlashcardSet = {
+      id: new Date().getTime().toString(),
       cards: [],
       createdDate: new Date(),
       name: 'new set',
