@@ -1569,6 +1569,14 @@ alphanum-sort@^1.0.2:
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
   integrity sha1-l6ERlkmyEa0zaR2fn0hqjsn74KM=
 
+angular-froala-wysiwyg@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/angular-froala-wysiwyg/-/angular-froala-wysiwyg-4.0.2.tgz#12dd48b4d7e94acf3107fdc7f6f2fdcd476fc5c0"
+  integrity sha512-0HmUXUvxeIZE+kKzb1+0xfCnnbfGBQ7PCcW/V/0yfBasYR3ul09Xo6Ke4hD0rYmglbJaC7EWnVltZfE2YNZQgg==
+  dependencies:
+    froala-editor "4.0.2"
+    tslib "^2.0.0"
+
 ansi-colors@4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-4.1.1.tgz#cbb9ae256bf750af1eab344f229aa27fe94ba348"
@@ -3328,6 +3336,11 @@ fresh@0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
   integrity sha1-PYyt2Q2XZWn6g1qx+OSyOhBWBac=
+
+froala-editor@4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/froala-editor/-/froala-editor-4.0.2.tgz#900812e0fae705fab1e96e394b6734d7d304a3c3"
+  integrity sha512-BjtAvSzOPWmIvavjBx2Uj/LDAgsLg4hJV0616ejt5ky33tC7wbxYfIBZDqbWueDvyeZE00spOGuU/o1QYmNIAA==
 
 fs-extra@^8.1.0:
   version "8.1.0"

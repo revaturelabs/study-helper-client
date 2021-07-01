@@ -1,0 +1,4 @@
+<div [innerHTML]="notes.body" *ngIf="notes; else noNotes"></div>
+<ng-template #noNotes>
+  <h1>Woops! Wrong page.</h1>
+</ng-template>

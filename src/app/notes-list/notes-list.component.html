@@ -1,0 +1,9 @@
+<div>
+  <a routerLink="/notes/{{ note.id }}" *ngFor="let note of allNotes">
+    <mat-card>
+      <p>Title: {{ note.title }}</p>
+      <p>Created: {{ note.createdDate }}</p>
+      <p>{{ note.body.split(" ").length }} words</p>
+    </mat-card>
+  </a>
+</div>

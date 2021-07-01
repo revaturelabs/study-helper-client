@@ -1,0 +1,6 @@
+<label for="title">Title</label>
+<input [(ngModel)]="title" />
+<div [(froalaModel)]="body" [froalaEditor]></div>
+<button [disabled]="!body || !title" mat-raised-button (click)="submit()">
+  Submit
+</button>
