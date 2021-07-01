@@ -1,2 +1,2 @@
 # study-helper-client
-- MAde with ❤️ using Angular 11
+## Made with ❤️ using Angular 11
