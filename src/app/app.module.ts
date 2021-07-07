@@ -14,6 +14,8 @@ import { FlashcardStackViewComponent } from './flashcard-stack-view/flashcard-st
 import { WriteNoteComponent } from './write-note/write-note.component';
 import { NotesViewComponent } from './notes-view/notes-view.component';
 import { NotesListComponent } from './notes-list/notes-list.component';
+import { HttpClientModule } from '@angular/common/http';
+import { TimerFabComponent } from './timer-fab/timer-fab.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { NotesListComponent } from './notes-list/notes-list.component';
     WriteNoteComponent,
     NotesViewComponent,
     NotesListComponent,
+    TimerFabComponent,
   ],
   imports: [
     FroalaEditorModule.forRoot(),
@@ -35,6 +38,7 @@ import { NotesListComponent } from './notes-list/notes-list.component';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MaterialModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

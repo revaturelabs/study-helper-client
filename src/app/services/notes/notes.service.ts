@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Note } from 'src/app/models/Note';
+import { HttpService } from '../http/http.service';
 
 @Injectable({
   providedIn: 'root',
@@ -8,6 +9,12 @@ import { Note } from 'src/app/models/Note';
 export class NotesService {
   private notes: Note[] = [];
   public subject: Subject<Note[]> = new Subject<Note[]>();
+
+  constructor(private http: HttpService) {
+    http.get<Note[]>('notes').subscribe((data) => {
+      this.notes = data;
+    });
+  }
 
   public getAllNotes() {
     return this.notes;
@@ -18,7 +25,9 @@ export class NotesService {
   }
 
   public addNotes(newNote: Note) {
-    this.notes.push(newNote);
-    this.subject.next(this.notes);
+    this.http.post('notes', newNote).subscribe(() => {
+      this.notes.push(newNote);
+      this.subject.next(this.notes);
+    });
   }
 }
