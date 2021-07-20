@@ -4,7 +4,7 @@
       <mat-form-field appearance="fill">
         <mat-label>Set Title</mat-label>
         <input
-          [(ngModel)]="name"
+          [(ngModel)]="title"
           matInput
           placeholder="Eg. Course Refresher"
           required
@@ -26,7 +26,7 @@
       <mat-chip-list aria-label="Tags selection" class="tags__container">
         <mat-chip color="primary" *ngFor="let tag of tags">{{ tag }}</mat-chip>
       </mat-chip-list>
-      <button [disabled]="!name" mat-button matStepperNext>Next</button>
+      <button [disabled]="!title" mat-button matStepperNext>Next</button>
     </div>
   </mat-step>
   <mat-step label="Add Cards">
@@ -71,7 +71,7 @@
   </mat-step>
   <mat-step label="Review">
     <div class="col">
-      <p>Name: {{ name }}</p>
+      <p>Title: {{ title }}</p>
       <mat-chip-list aria-label="Tags selection" class="tags__container">
         <mat-chip color="primary" *ngFor="let tag of tags">{{ tag }}</mat-chip>
       </mat-chip-list>
@@ -84,7 +84,7 @@
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button
-          [disabled]="!name || cards.length < 1"
+          [disabled]="!title || cards.length < 1"
           mat-button
           (click)="submit()"
         >

@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Injectable, OnInit } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { FlashcardSet } from '../../models/Flashcards';
 import { HttpService } from '../http/http.service';
 
@@ -7,17 +7,21 @@ import { HttpService } from '../http/http.service';
   providedIn: 'root',
 })
 export class FlashcardsService {
+  private servicePrefix = 'flashcards';
   private flashcardSets: FlashcardSet[] = [];
   public subject: Subject<FlashcardSet[]> = new Subject<FlashcardSet[]>();
 
   constructor(private http: HttpService) {
-    http.get<FlashcardSet[]>('flashcards').subscribe((data) => {
-      this.flashcardSets = data;
-    });
+    this.getCards();
   }
 
   public getCards() {
-    return this.flashcardSets;
+    this.http
+      .get<FlashcardSet[]>(this.servicePrefix + '/flashcardSets')
+      .subscribe((data) => {
+        this.flashcardSets = data;
+        this.subject.next(data);
+      });
   }
 
   public getCardsSetById(id: string | number): FlashcardSet | null {
@@ -25,9 +29,11 @@ export class FlashcardsService {
   }
 
   public addCards(cards: FlashcardSet) {
-    this.http.post('flashcards', cards).subscribe(() => {
-      this.flashcardSets.push(cards);
-      this.subject.next(this.flashcardSets);
-    });
+    this.http
+      .post(this.servicePrefix + '/flashcardSet', cards)
+      .subscribe(() => {
+        this.flashcardSets.push(cards);
+        this.subject.next(this.flashcardSets);
+      });
   }
 }

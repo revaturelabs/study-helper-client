@@ -23,6 +23,7 @@ describe('CreateFlashcardWizardComponent', () => {
     instance.name = 'Ivan';
     instance.tags.push('Tag');
     const newCard: Flashcard = {
+      id: new Date().getTime().toString(),
       answer: 'Answer',
       createdDate: new Date(),
       question: 'Question',

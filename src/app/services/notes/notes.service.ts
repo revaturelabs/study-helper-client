@@ -7,17 +7,31 @@ import { HttpService } from '../http/http.service';
   providedIn: 'root',
 })
 export class NotesService {
+  private servicePrefix = 'notes';
   private notes: Note[] = [];
   public subject: Subject<Note[]> = new Subject<Note[]>();
 
+  // constructor(private http: HttpService) {
+  //   http.get<Note[]>(this.servicePrefix + '/notes').subscribe((data) => {
+  //     this.notes = data;
+  //   });
+  // }
+
+  // public getAllNotes() {
+  //   return this.notes;
+  // }
+
   constructor(private http: HttpService) {
-    http.get<Note[]>('notes').subscribe((data) => {
-      this.notes = data;
-    });
+    this.getAllNotes();
   }
 
   public getAllNotes() {
-    return this.notes;
+    this.http
+      .get<Note[]>(this.servicePrefix + '/notes')
+      .subscribe((data) => {
+        this.notes = data;
+        this.subject.next(data);
+      });
   }
 
   public getNotesById(id: string | number): Note | null {
@@ -25,7 +39,7 @@ export class NotesService {
   }
 
   public addNotes(newNote: Note) {
-    this.http.post('notes', newNote).subscribe(() => {
+    this.http.post(this.servicePrefix + '/notes', newNote).subscribe(() => {
       this.notes.push(newNote);
       this.subject.next(this.notes);
     });

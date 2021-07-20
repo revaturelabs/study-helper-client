@@ -1,4 +1,5 @@
 export interface Flashcard {
+  id: string;
   createdDate: Date;
   question: string;
   answer: string;
@@ -8,7 +9,7 @@ export interface FlashcardSet {
   id: string;
   createdDate: Date;
   lastModifiedDate?: Date;
-  name: string;
+  title: string;
   tags: string[];
-  cards: Flashcard[];
+  flashcard: Flashcard[];
 }

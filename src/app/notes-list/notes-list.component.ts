@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Note } from '../models/Note';
 import { NotesService } from '../services/notes/notes.service';
 
@@ -9,12 +10,15 @@ import { NotesService } from '../services/notes/notes.service';
 })
 export class NotesListComponent implements OnInit {
   allNotes: Note[] = [];
-  constructor(private noteService: NotesService) {}
+  noteSubscription: Subscription;
+
+  constructor(private noteService: NotesService) {
+    this.noteSubscription = this.noteService.subject.subscribe(
+      (updatedNotes) => (this.allNotes = updatedNotes)
+    );
+  }
 
   ngOnInit(): void {
-    this.allNotes = this.noteService.getAllNotes();
-    this.noteService.subject.subscribe((updatedNotes) => {
-      this.allNotes = updatedNotes;
-    });
+    this.noteService.getAllNotes();
   }
 }

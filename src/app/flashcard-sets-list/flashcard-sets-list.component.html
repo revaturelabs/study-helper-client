@@ -1,9 +1,9 @@
 <div>
   <a routerLink="/cards/{{ set.id }}" *ngFor="let set of cardSets">
     <mat-card>
-      <p>Name: {{ set.name }}</p>
+      <p>Name: {{ set.title }}</p>
       <p>Created: {{ set.createdDate }}</p>
-      <p>{{ set.cards.length }} cards</p>
+      <p>{{ set.flashcard.length }} cards</p>
       <hr />
       <mat-chip-list aria-label="Tags selection" class="tags__container">
         <mat-chip color="primary" *ngFor="let tag of set.tags">{{

@@ -6,10 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class HttpService {
-  private rootUrl = 'http://localhost:8762';
+  private rootUrl = 'http://localhost:8765';
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-    withCredentials: true,
   };
 
   constructor(private http: HttpClient) {}

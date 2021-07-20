@@ -15,10 +15,10 @@ describe('FlashcardsService', () => {
     let cards = service.getCards();
     expect(cards).toEqual([]);
     const newCards: FlashcardSet = {
+      title: 'Set title',
+      flashcard: [],
       id: new Date().getTime().toString(),
-      cards: [],
       createdDate: new Date(),
-      name: 'new set',
       tags: ['a tag'],
     };
     service.addCards(newCards);

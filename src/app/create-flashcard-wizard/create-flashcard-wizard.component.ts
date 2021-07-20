@@ -8,7 +8,7 @@ import { Flashcard, FlashcardSet } from '../models/Flashcards';
   styleUrls: ['./create-flashcard-wizard.component.scss'],
 })
 export class CreateFlashcardWizardComponent implements OnInit {
-  name = '';
+  title = '';
   tags: string[] = [];
   tagName = '';
   cards: Flashcard[] = [];
@@ -27,6 +27,7 @@ export class CreateFlashcardWizardComponent implements OnInit {
   onAddCard() {
     const { answer, question } = this;
     this.cards.push({
+      id: new Date().getTime().toString(),
       answer,
       question,
       createdDate: new Date(),
@@ -38,13 +39,13 @@ export class CreateFlashcardWizardComponent implements OnInit {
   submit() {
     const newSet: FlashcardSet = {
       id: new Date().getTime().toString(),
-      cards: this.cards,
+      flashcard: this.cards,
       createdDate: new Date(),
-      name: this.name,
+      title: this.title,
       tags: this.tags,
     };
     this.cardService.addCards(newSet);
-    this.name = '';
+    this.title = '';
     this.tags = [];
     this.tagName = '';
     this.cards = [];
