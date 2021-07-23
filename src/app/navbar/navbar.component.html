@@ -1,0 +1,20 @@
+<nav mat-tab-nav-bar>
+  <a
+    mat-tab-link
+    *ngFor="let link of links"
+    [routerLink]="link.path"
+    (click)="activeRoute = link.title"
+    [active]="activeRoute == link.title"
+  >
+    {{ link.title
+    }}<span
+      *ngIf="
+        link.title === 'Set study timer' && !!timerService.counterInSeconds
+      "
+      >{{ ": " }}{{ timerService.counterInSeconds | formattedSecondsPipe }}</span
+    >
+  </a>
+  <!-- <a routerLink="/">Main</a>
+  <a routerLink="/createset">Create new set</a>
+  <a routerLink="/write">Write new notes</a> -->
+</nav>

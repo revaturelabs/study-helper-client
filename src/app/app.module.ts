@@ -16,6 +16,9 @@ import { NotesViewComponent } from './notes-view/notes-view.component';
 import { NotesListComponent } from './notes-list/notes-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TimerFabComponent } from './timer-fab/timer-fab.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FormattedSecondsPipePipe } from './pipe/formattedSeconds/formatted-seconds-pipe.pipe';
+import { FlipCardComponent } from './flashcard-stack-view/flip-card/flip-card.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { TimerFabComponent } from './timer-fab/timer-fab.component';
     NotesViewComponent,
     NotesListComponent,
     TimerFabComponent,
+    NavbarComponent,
+    FormattedSecondsPipePipe,
+    FlipCardComponent,
   ],
   imports: [
     FroalaEditorModule.forRoot(),

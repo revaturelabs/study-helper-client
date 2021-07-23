@@ -17,7 +17,6 @@ describe('FlashcardsService', () => {
     const newCards: FlashcardSet = {
       title: 'Set title',
       flashcard: [],
-      id: new Date().getTime().toString(),
       createdDate: new Date(),
       tags: ['a tag'],
     };

@@ -1,32 +1,34 @@
 <div id="timer">
-  <button mat-button (click)="start()">Start</button>
-  <h3 *ngIf="counterInSeconds; else inputs">
-    {{ Math.floor(this.counterInSeconds / 60) }} :
-    {{ this.counterInSeconds % 60 }}
+  <button mat-flat-button color="primary" (click)="start()">Start</button>
+  <h3 *ngIf="timerService.counterInSeconds; else inputsTemplate">
+    {{ Math.floor(timerService.counterInSeconds / 60) }} :
+    {{ this.timerService.counterInSeconds % 60 }}
   </h3>
-  <ng-template #inputs>
-    <mat-form-field appearance="fill">
-      <mat-label>Study Length (in minutes)</mat-label>
-      <input
-        [(ngModel)]="studyTime"
-        matInput
-        placeholder="50 minutes by default"
-        required
-      />
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Break Length (in minutes)</mat-label>
-      <input
-        [(ngModel)]="breakTime"
-        matInput
-        placeholder="10 minutes by default"
-        required
-      />
-    </mat-form-field>
+  <ng-template #inputsTemplate>
+    <div id="timerInputs" class="col">
+      <mat-form-field appearance="fill">
+        <mat-label>Study Length (in minutes)</mat-label>
+        <input
+          [(ngModel)]="studyTime"
+          matInput
+          placeholder="50 minutes by default"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Break Length (in minutes)</mat-label>
+        <input
+          [(ngModel)]="breakTime"
+          matInput
+          placeholder="10 minutes by default"
+          required
+        />
+      </mat-form-field>
+    </div>
   </ng-template>
-  <button mat-button (click)="stop()">Stop</button>
-  <h1 *ngIf="!isOnBreak; else onBreak">Study</h1>
+  <button mat-flat-button color="primary" (click)="stop()">Stop</button>
+  <!-- <h1 *ngIf="!isOnBreak; else onBreak">Study</h1>
   <ng-template #onBreak>
     <h1>Take a break</h1>
-  </ng-template>
+  </ng-template> -->
 </div>

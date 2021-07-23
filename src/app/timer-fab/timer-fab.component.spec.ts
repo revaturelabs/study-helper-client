@@ -25,11 +25,11 @@ fdescribe('TimerFabComponent', () => {
 
   it('sets study and break lengths to 50 and 10 minutes, respectively, by default', fakeAsync(() => {
     component.start();
-    expect(component.isOnBreak).toBeFalse();
+    expect(component.timerService.isOnBreak).toBeFalse();
     tick(1000 * 60 * 50 + 6000); // fifty minutes and one second
-    expect(component.isOnBreak).toBeTrue();
+    expect(component.timerService.isOnBreak).toBeTrue();
     tick(1000 * 60 * 10 + 6000); // ten minutes and one second
-    expect(component.isOnBreak).toBeFalse();
+    expect(component.timerService.isOnBreak).toBeFalse();
     component.stop();
   }));
 });

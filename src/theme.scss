@@ -1,11 +1,16 @@
 @import "~@angular/material/theming";
-
 @include mat-core();
 
+:root {
+  --default: #f26925;
+  --light: #e68758;
+  --dark: #bb521e;
+}
+
 $mat-revature: (
-  default: #f26925,
-  light: #e68758,
-  dark: #bb521e,
+  default: var(--default),
+  light: var(--light),
+  dark: var(--dark),
   contrast: (
     50: $dark-primary-text,
     100: $dark-primary-text,

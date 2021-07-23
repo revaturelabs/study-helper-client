@@ -8,6 +8,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTabsModule } from '@angular/material/tabs';
 
 const material: any[] = [
   MatStepperModule,
@@ -18,7 +19,8 @@ const material: any[] = [
   MatSnackBarModule,
   MatChipsModule,
   MatCardModule,
-  MatIconModule
+  MatIconModule,
+  MatTabsModule,
 ];
 
 @NgModule({

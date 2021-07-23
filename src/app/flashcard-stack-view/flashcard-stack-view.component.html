@@ -1,5 +1,20 @@
 <div *ngIf="!!set; else noCards">
   <h1>{{ set.title }}</h1>
+  <div class="row__spaced">
+    <h3>Created: {{ set.createdDate | date: "short" }}</h3>
+    <h3 *ngIf="set.lastModifiedDate">
+      Modified: {{ set.lastModifiedDate | date: "short" }}
+    </h3>
+  </div>
+  <hr />
+  <div style="margin: 1rem" class="centered__children">
+    {{ currentIndex + 1 + "/" + set.flashcard.length }}
+  </div>
+  <div class="centered__children">
+    <mat-icon class="chevron" (click)="prevCard()">chevron_left</mat-icon>
+    <app-flip-card [card]="set.flashcard[currentIndex]"></app-flip-card>
+    <mat-icon class="chevron" (click)="nextCard()">chevron_right</mat-icon>
+  </div>
 </div>
 <ng-template #noCards>
   <h1>Woops! Wrong page.</h1>

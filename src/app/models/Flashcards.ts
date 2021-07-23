@@ -1,12 +1,12 @@
 export interface Flashcard {
-  id: string;
+  id?: number;
   createdDate: Date;
   question: string;
   answer: string;
 }
 
 export interface FlashcardSet {
-  id: string;
+  id?: number;
   createdDate: Date;
   lastModifiedDate?: Date;
   title: string;

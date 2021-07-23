@@ -24,10 +24,13 @@ export class CreateFlashcardWizardComponent implements OnInit {
     this.tagName = '';
   }
 
+  deleteCard(card: Flashcard) {
+    this.cards = this.cards.filter((c) => c !== card);
+  }
+
   onAddCard() {
     const { answer, question } = this;
     this.cards.push({
-      id: new Date().getTime().toString(),
       answer,
       question,
       createdDate: new Date(),
@@ -38,7 +41,6 @@ export class CreateFlashcardWizardComponent implements OnInit {
 
   submit() {
     const newSet: FlashcardSet = {
-      id: new Date().getTime().toString(),
       flashcard: this.cards,
       createdDate: new Date(),
       title: this.title,

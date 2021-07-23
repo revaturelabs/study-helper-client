@@ -20,9 +20,5 @@ export class NotesViewComponent implements OnInit {
     this.notes =
       this.noteService.getNotesById(this.route.snapshot.params['id']) ||
       undefined;
-    console.log(
-      '🚀 ~ file: notes-view.component.ts ~ line 21 ~ NotesViewComponent ~ ngOnInit ~ this.notes',
-      this.notes
-    );
   }
 }

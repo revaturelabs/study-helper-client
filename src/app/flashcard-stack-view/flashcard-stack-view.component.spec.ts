@@ -1,7 +1,5 @@
-import { Injectable } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
 import { FlashcardSet } from '../models/Flashcards';
 import { FlashcardsService } from '../services/flashcards/flashcards.service';
 
@@ -42,9 +40,9 @@ describe('FlashcardStackViewComponent', () => {
   it('Retrieves the correct card stack based on route parameter "ID"', () => {
     const newCards: FlashcardSet = {
       id: STACK_ID,
-      cards: [],
+      flashcard: [],
       createdDate: new Date(),
-      name: 'new set',
+      title: 'new set',
       tags: ['a tag'],
     };
     service.addCards(newCards);

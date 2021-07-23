@@ -1,5 +1,9 @@
-<div>
-  <a routerLink="/cards/{{ set.id }}" *ngFor="let set of cardSets">
+<div class="card__container">
+  <a
+    class="card card--flashcardSet"
+    routerLink="/cards/{{ set.id }}"
+    *ngFor="let set of cardSets"
+  >
     <mat-card>
       <p>Name: {{ set.title }}</p>
       <p>Created: {{ set.createdDate }}</p>

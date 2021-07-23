@@ -24,7 +24,6 @@ describe('NotesViewComponent', () => {
 
   it('Should render the correct notes based on route parameter "ID"', () => {
     const newNote: Note = {
-      id: new Date().getTime().toString(),
       body: 'body',
       createdDate: new Date(),
       title: 'title',

@@ -1,9 +1,12 @@
-<nav>
-  <ul>
-    <li><a routerLink="/">Main</a></li>
-    <li><a routerLink="/createset">Create new set</a></li>
-    <li><a routerLink="/write">Write new notes</a></li>
-  </ul>
-</nav>
-<router-outlet></router-outlet>
-<app-timer-fab></app-timer-fab>
+<div *ngIf="!timerService.isOnBreak; else onBreakDisplay">
+  <app-navbar></app-navbar>
+  <router-outlet></router-outlet>
+</div>
+<ng-template #onBreakDisplay>
+  <div id="onBreakDisplay">
+    <h2>Currently on break</h2>
+    <h3 *ngIf="!!timerService.counterInSeconds" >
+      {{ timerService.counterInSeconds | formattedSecondsPipe }} Remaining
+    </h3>
+  </div>
+</ng-template>

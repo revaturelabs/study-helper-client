@@ -11,27 +11,22 @@ export class NotesService {
   private notes: Note[] = [];
   public subject: Subject<Note[]> = new Subject<Note[]>();
 
-  // constructor(private http: HttpService) {
-  //   http.get<Note[]>(this.servicePrefix + '/notes').subscribe((data) => {
-  //     this.notes = data;
-  //   });
-  // }
-
-  // public getAllNotes() {
-  //   return this.notes;
-  // }
-
   constructor(private http: HttpService) {
     this.getAllNotes();
   }
 
+  public deleteNote(id: string | number) {
+    this.http.delete(`${this.servicePrefix}/${id}`).subscribe();
+  }
+
   public getAllNotes() {
-    this.http
-      .get<Note[]>(this.servicePrefix + '/notes')
-      .subscribe((data) => {
-        this.notes = data;
-        this.subject.next(data);
-      });
+    let d: Note[] = [];
+    this.http.get<Note[]>(this.servicePrefix + '/notes').subscribe((data) => {
+      this.notes = data;
+      this.subject.next(data);
+      d = data;
+    });
+    return d;
   }
 
   public getNotesById(id: string | number): Note | null {
@@ -39,7 +34,7 @@ export class NotesService {
   }
 
   public addNotes(newNote: Note) {
-    this.http.post(this.servicePrefix + '/notes', newNote).subscribe(() => {
+    this.http.post(this.servicePrefix + '/note', newNote).subscribe(() => {
       this.notes.push(newNote);
       this.subject.next(this.notes);
     });

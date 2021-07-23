@@ -1,5 +1,5 @@
-import { Injectable, OnInit } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { FlashcardSet } from '../../models/Flashcards';
 import { HttpService } from '../http/http.service';
 
@@ -15,13 +15,20 @@ export class FlashcardsService {
     this.getCards();
   }
 
+  public deleteCards(cards: FlashcardSet) {
+    this.http.delete(`${this.servicePrefix}/${cards.id}`).subscribe();
+  }
+
   public getCards() {
+    let cards: FlashcardSet[] = [];
     this.http
       .get<FlashcardSet[]>(this.servicePrefix + '/flashcardSets')
       .subscribe((data) => {
         this.flashcardSets = data;
         this.subject.next(data);
+        cards = data;
       });
+    return cards;
   }
 
   public getCardsSetById(id: string | number): FlashcardSet | null {

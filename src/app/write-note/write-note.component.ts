@@ -16,7 +16,6 @@ export class WriteNoteComponent implements OnInit {
 
   submit() {
     this.noteServivce.addNotes({
-      id: new Date().getTime().toString(),
       title: this.title,
       body: this.body,
       createdDate: new Date(),

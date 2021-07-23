@@ -1,71 +1,41 @@
-import { Component, OnInit } from '@angular/core';
-
-const FIFTY_MINUTES_IN_SECS = 60 * 50;
-const TEN_MINUTES_IN_SECS = 60 * 10;
+import { Component } from '@angular/core';
+import { TimerService } from '../services/timer/timer.service';
 
 @Component({
   selector: 'app-timer-fab',
   templateUrl: './timer-fab.component.html',
   styleUrls: ['./timer-fab.component.scss'],
 })
-export class TimerFabComponent implements OnInit {
-  timeout: any;
-  studyTimeInSeconds: number;
-  breakTimeInSeconds: number;
-  isOnBreak: boolean;
-  counterInSeconds?: number;
+export class TimerFabComponent {
   Math = Math;
 
-  constructor() {
-    this.studyTimeInSeconds = FIFTY_MINUTES_IN_SECS; // study time is 50 minutes by default
-    this.breakTimeInSeconds = TEN_MINUTES_IN_SECS; // break length 10 minutes by default
-    this.isOnBreak = false;
-  }
+  constructor(public timerService: TimerService) {}
 
-  ngOnInit(): void {}
-
-  start = () => {
-    this.isOnBreak = false;
-    this.timer(this.studyTimeInSeconds, 0, this.break);
-  };
-
-  private break = () => {
-    this.isOnBreak = true;
-    this.timer(this.breakTimeInSeconds, 0, this.start);
-  };
-
-  private timer(timeInSeconds: number, counter: number, callback: () => void) {
-    this.timeout = setTimeout(() => {
-      if (counter < timeInSeconds) {
-        this.counterInSeconds = timeInSeconds - counter;
-        this.timer(timeInSeconds, ++counter, callback);
-      } else callback();
-    }, 1000);
+  start() {
+    this.timerService.start();
   }
 
   stop() {
-    this.isOnBreak = false;
-    this.counterInSeconds = undefined;
-    clearTimeout(this.timeout);
+    this.timerService.stop();
   }
 
   public get counter(): number | null {
-    return !!this.counterInSeconds ? this.counterInSeconds * 1000 : null;
+    return this.timerService.counter;
   }
 
   public set studyTime(amountInMinutes: number) {
-    this.studyTimeInSeconds = amountInMinutes * 60;
+    this.timerService.studyTime = amountInMinutes;
   }
 
   public set breakTime(amountInMinutes: number) {
-    this.breakTimeInSeconds = amountInMinutes * 60;
+    this.timerService.breakTime = amountInMinutes;
   }
 
   public get studyTime(): number {
-    return this.studyTimeInSeconds / 60;
+    return this.timerService.studyTime;
   }
 
   public get breakTime(): number {
-    return this.breakTimeInSeconds / 60;
+    return this.timerService.breakTime;
   }
 }
