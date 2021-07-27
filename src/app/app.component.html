@@ -1,0 +1,12 @@
+<div *ngIf="!timerService.isOnBreak; else onBreakDisplay">
+  <app-navbar></app-navbar>
+  <router-outlet></router-outlet>
+</div>
+<ng-template #onBreakDisplay>
+  <div id="onBreakDisplay">
+    <h2>Currently on break</h2>
+    <h3 *ngIf="!!timerService.counterInSeconds" >
+      {{ timerService.counterInSeconds | formattedSecondsPipe }} Remaining
+    </h3>
+  </div>
+</ng-template>

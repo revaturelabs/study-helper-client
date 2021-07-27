@@ -1,0 +1,43 @@
+.animatedCard > * {
+  transition-duration: 1s;
+}
+
+.flashcard {
+  position: relative;
+  width: 400px;
+  height: 400px;
+
+  &--flipped {
+    .flashcard__side--front {
+      transform: rotateX(180deg);
+    }
+
+    .flashcard__side--back {
+      transform: rotateX(0deg);
+    }
+  }
+
+  &__side {
+    border-radius: 1rem;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    &--front {
+      outline: 5px solid var(--default);
+      color: var(--default);
+    }
+    &--back {
+      background-color: var(--default);
+      color: #fff;
+      transform: rotateX(180deg);
+    }
+  }
+}

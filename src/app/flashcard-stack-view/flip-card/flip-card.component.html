@@ -1,0 +1,13 @@
+<div
+  [class.flashcard--flipped]="flipped"
+  [class.animatedCard]="flipped"
+  (click)="flipCard()"
+  class="flashcard"
+>
+  <div class="flashcard__side flashcard__side--front">
+    {{ card.question }}
+  </div>
+  <div class="flashcard__side flashcard__side--back">
+    {{ card.answer }}
+  </div>
+</div>

@@ -1,0 +1,131 @@
+<mat-stepper [linear]="true" #stepper>
+  <mat-step label="Basic Info">
+    <div class="col spaced__children">
+      <mat-form-field appearance="fill">
+        <mat-label>Set Title</mat-label>
+        <input
+          [(ngModel)]="title"
+          matInput
+          placeholder="Eg. Course Refresher"
+          required
+        />
+      </mat-form-field>
+      <div class="row">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter Tags (Optional)</mat-label>
+          <input
+            [(ngModel)]="tagName"
+            matInput
+            placeholder="Spring, React, etc."
+          />
+        </mat-form-field>
+        <button [disabled]="!tagName" (click)="onAddTag()" mat-icon-button>
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+      <mat-chip-list aria-label="Tags selection" class="tags__container">
+        <mat-chip color="primary" *ngFor="let tag of tags">{{ tag }}</mat-chip>
+      </mat-chip-list>
+      <button color="primary" [disabled]="!title" mat-button matStepperNext>
+        Next
+      </button>
+    </div>
+  </mat-step>
+  <mat-step label="Add Cards">
+    <div class="spaced__children">
+      <div class="row">
+        <div class="createCardForm col">
+          <mat-form-field>
+            <mat-label>Question (Front Side)</mat-label>
+            <input
+              type="search"
+              [(ngModel)]="question"
+              matInput
+              placeholder="Eg. What is TypeScript?"
+            />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Answer (Back Side)</mat-label>
+            <input
+              [(ngModel)]="answer"
+              matInput
+              placeholder="Eg. TypeScript is JavaScript, but with extra steps"
+            />
+          </mat-form-field>
+          <button
+            mat-flat-button
+            color="primary"
+            [disabled]="!question || !answer"
+            (click)="onAddCard()"
+          >
+            Add Card
+          </button>
+        </div>
+        <div class="createdCardsView card__container">
+          <mat-card *ngFor="let card of cards">
+            <div class="card relative">
+              <div (click)="deleteCard(card)" class="card__closeIcon">
+                <mat-icon aria-hidden="false" aria-label="Example home icon"
+                  >close</mat-icon
+                >
+              </div>
+              <p>Q: {{ card.question }}</p>
+              <hr />
+              <p>A: {{ card.answer }}</p>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+      <div class="row__spaced">
+        <button color="primary" mat-flat-button matStepperPrevious>Back</button>
+        <button
+          color="primary"
+          [disabled]="cards.length < 1"
+          mat-flat-button
+          matStepperNext
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  </mat-step>
+  <mat-step label="Review">
+    <div class="col">
+      <div class="col">
+        <div class="row spaced__children">
+          <p>
+            Title: <i>{{ title }}</i>
+          </p>
+          <p>
+            Cards: <i>{{ cards.length }}</i>
+          </p>
+        </div>
+        <mat-chip-list aria-label="Tags selection" class="tags__container">
+          <mat-chip color="primary" selected *ngFor="let tag of tags">{{
+            tag
+          }}</mat-chip>
+        </mat-chip-list>
+      </div>
+      <div class="card__container">
+        <mat-card *ngFor="let card of cards">
+          <div class="card">
+            <p>Q: {{ card.question }}</p>
+            <hr />
+            <p>A: {{ card.answer }}</p>
+          </div>
+        </mat-card>
+      </div>
+      <div class="row__spaced">
+        <button color="primary" mat-flat-button matStepperPrevious>Back</button>
+        <button
+          color="primary"
+          [disabled]="!title || cards.length < 1"
+          mat-flat-button
+          (click)="submit()"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  </mat-step>
+</mat-stepper>

@@ -1,0 +1,11 @@
+<div *ngIf="notes; else noNotes">
+  <h1>{{ notes.title }}</h1>
+  <h3>Created: {{ notes.createdDate | date: "short" }}</h3>
+  <h3 *ngIf="notes.lastModifiedDate">
+    Modified: {{ notes.lastModifiedDate | date: "short" }}
+  </h3>
+  <p [innerHTML]="notes.body"></p>
+</div>
+<ng-template #noNotes>
+  <h1>Woops! Wrong page.</h1>
+</ng-template>

@@ -1,0 +1,14 @@
+#timer {
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  & > * {
+    margin: 0.5rem;
+  }
+}
+
+#timerInputs {
+  align-items: center;
+}
